@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 황선영 - Starbucks </title>
+    <title> 황선영-Starbucks </title>
     <!-- link -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="shoutcut icon" href="./images/fv.png">
-    <!-- script:src -->    
+    <!-- script:src -->
     <script src="https://kit.fontawesome.com/2d323a629b.js" crossorigin="anonymous"></script>
     <script src="./script/jquery-1.12.3.js"></script>
     <script>
-        $(function () {
-            $("#menubtn").click(function () { 
-                $("#menu").slideToggle();
+        $(function(){
+            var $btnGnb = $('.menubtn');
+            var $nav = $('#menu');
+            $btnGnb.on('click', function(){
+                $nav.slideToggle();
+            }); //모바일 메뉴 클릭 이벤트
+            $(window).on('load resize', function(){
+                if ($(this).width() > 768) { //PC모드               
+                    $nav.show();
+                } else { //Mobile모드     
+                    $btnGnb.removeClass('.menubtn').next().hide();
+                }
             });
         });
         // .slideToggle(); - 선택한 요소가 보여지면 숨겨주고, 숨겨져있으면 보여줌. (점차 접히고 펼쳐지는 구조)
     </script>
 </head>
+
 <body>
     <div id="wrap">
         <header>
@@ -31,7 +42,7 @@
                     <!-- toggle, menu -->
                     <!-- toggle -->
                     <div class="menus">
-                        <a href="#" id="menubtn"><i class="fas fa-bars"></i></a>                     
+                        <a href="#" class="menubtn"><i class="fas fa-bars"></i></a>
                         <!-- menu -->
                         <nav id="menu">
                             <ul>
@@ -49,13 +60,13 @@
         <div id="center">
             <!-- slide, thumIme3ea, notice+sns  -->
             <div class="slide">
-                <a href="#"><img src="./images/main_img.jpg" alt="메인이미지" class="topimg"></a>              
+                <a href="#"><img src="./images/main_img.jpg" alt="메인이미지" class="topimg"></a>
                 <p class="text"> Starbucks </p>
             </div>
             <!-- thum 3ea -->
             <div class="con">
                 <div class="con1">
-               
+
                     <div class="summary">
                         <a href="#">
                             <i class="thum1"></i>
@@ -82,14 +93,14 @@
                         </a>
                     </div>
                 </div>
-            </div>         
+            </div>
             <div class="info">
                 <!-- 공지사항 -->
                 <div class="info_inner">
                     <div class="notice">
                         <h3>공지사항</h3>
                         <ul>
-                            <li>                            
+                            <li>
                                 <a href="#">
                                     <span>스타벅스의 특별한 리워드</span>
                                     <span class="time">22-03-17</span>
@@ -117,7 +128,7 @@
                     </div>
                 </div>
                 <!-- sns -->
-                <div class="sns">              
+                <div class="sns">
                     <div class="follow">
                         <p class="follow-info">최신정보를 여기서도 다운받으세요</p>
                         <ul>
@@ -130,7 +141,7 @@
             </div>
         </div>
         <!-- footer -->
-        <footer>         
+        <footer>
             <div class="copyright">
                 <p>
                     (주) 스타벅스코리아 대표 : 송데이비드호섭 <br />
@@ -146,4 +157,5 @@
         </footer>
     </div>
 </body>
+
 </html>
